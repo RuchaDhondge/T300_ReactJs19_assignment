@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ProductList from "./components/ProductList";
+import RegistrationForm from "./components/RegistrationForm";
 import { productsPromise } from "./data/products";
 
 function LoadingProducts() {
@@ -33,7 +34,7 @@ function App() {
 
           <section className="panel">
             <h2>User Registration</h2>
-            <p>Register with your name, email, and password.</p>
+            <RegistrationForm />
           </section>
         </section>
       </main>
