@@ -261,6 +261,35 @@ body {
   color: #475569;
 }
 
+.ref-demo {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ref-demo h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ref-demo-text {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.ref-demo-controls {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.ref-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+}
+
 @media (max-width: 900px) {
   .layout-grid {
     grid-template-columns: 1fr;

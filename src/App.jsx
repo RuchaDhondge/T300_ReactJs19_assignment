@@ -2,6 +2,7 @@ import { Suspense, useOptimistic, useState, useTransition } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ProductDetails from "./components/ProductDetails";
 import ProductList from "./components/ProductList";
+import RefFeatureDemo from "./components/RefFeatureDemo";
 import RegistrationForm from "./components/RegistrationForm";
 import RegisteredUserInfo from "./components/RegisteredUserInfo";
 import UserContext from "./context/UserContext";
@@ -112,6 +113,11 @@ function App() {
 
             <section className="panel">
               <RegisteredUserInfo />
+            </section>
+
+            <section className="panel">
+              <h2>Ref Features</h2>
+              <RefFeatureDemo />
             </section>
           </section>
         </main>
