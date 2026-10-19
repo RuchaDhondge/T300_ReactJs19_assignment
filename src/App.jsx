@@ -1,4 +1,4 @@
-import { Suspense, useOptimistic, useState } from "react";
+import { Suspense, useOptimistic, useState, useTransition } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ProductDetails from "./components/ProductDetails";
 import ProductList from "./components/ProductList";
@@ -29,34 +29,35 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [forceFailure, setForceFailure] = useState(false);
-  const [isCartPending, setIsCartPending] = useState(false);
   const [cartError, setCartError] = useState("");
   const [cartSuccess, setCartSuccess] = useState("");
+  const [isCartPending, startCartTransition] = useTransition();
   const [optimisticCartCount, addOptimisticCart] = useOptimistic(
     cartCount,
-    (currentCount, increaseBy) => currentCount + increaseBy
+    (currentCount, action) =>
+      action?.type === "increment" ? currentCount + action.value : currentCount
   );
 
-  async function handleAddToCart(product) {
+  function handleAddToCart(product) {
     setCartError("");
     setCartSuccess("");
-    setIsCartPending(true);
-    addOptimisticCart(1);
+    startCartTransition(async () => {
+      addOptimisticCart({ type: "increment", value: 1 });
 
-    try {
-      await addToCartRequest(forceFailure);
-      setCartCount((currentCount) => currentCount + 1);
-      setCartSuccess(`${product.name} added to cart.`);
-    } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : "Unable to add item to cart. Please try again.";
-      setCartError(message);
-    } finally {
-      setForceFailure(false);
-      setIsCartPending(false);
-    }
+      try {
+        await addToCartRequest(forceFailure);
+        setCartCount((currentCount) => currentCount + 1);
+        setCartSuccess(`${product.name} added to cart.`);
+      } catch (error) {
+        const message =
+          error instanceof Error
+            ? error.message
+            : "Unable to add item to cart. Please try again.";
+        setCartError(message);
+      } finally {
+        setForceFailure(false);
+      }
+    });
   }
 
   return (
