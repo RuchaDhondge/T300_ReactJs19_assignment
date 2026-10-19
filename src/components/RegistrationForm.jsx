@@ -1,4 +1,4 @@
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 
 const initialState = {
@@ -46,7 +46,7 @@ async function registerUserAction(_previousState, formData) {
     };
   }
 
-  await wait(1400);
+  await wait(2000);
 
   return {
     fields: { name: "", email: "", password: "" },
@@ -66,11 +66,17 @@ function SubmitButton() {
   );
 }
 
-function RegistrationForm() {
+function RegistrationForm({ onRegisterSuccess }) {
   const [state, formAction, isPending] = useActionState(
     registerUserAction,
     initialState
   );
+
+  useEffect(() => {
+    if (state.submittedUser) {
+      onRegisterSuccess(state.submittedUser);
+    }
+  }, [state.submittedUser, onRegisterSuccess]);
 
   return (
     <form action={formAction} className="register-form">

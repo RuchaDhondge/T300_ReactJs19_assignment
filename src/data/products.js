@@ -35,17 +35,9 @@ function createProductsPromise(shouldFail = false) {
           category: "Wearables",
           image: watchImage,
           description: "Track activity, heart rate, and notifications on the go."
-        },
-        {
-          id: 4,
-          name: "Backpack",
-          price: 1899,
-          category: "Accessories",
-          image: backpackImage,
-          description: "Water-resistant backpack with laptop compartment."
         }
       ]);
-    }, 1400);
+    }, 2000);
   });
 }
 
