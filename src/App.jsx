@@ -9,27 +9,35 @@ function LoadingProducts() {
 
 function App() {
   return (
-    <main className="app-shell">
-      <header className="app-header">
-        <h1>Mini E-Commerce Store</h1>
-      </header>
+    <>
+      <title>Mini E-Commerce Store - Products</title>
+      <meta
+        name="description"
+        content="Browse products and register to continue with the mini e-commerce experience."
+      />
 
-      <section className="layout-grid">
-        <section className="panel">
-          <h2>Product Listing</h2>
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingProducts />}>
-              <ProductList productsPromise={productsPromise} />
-            </Suspense>
-          </ErrorBoundary>
-        </section>
+      <main className="app-shell">
+        <header className="app-header">
+          <h1>Mini E-Commerce Store</h1>
+        </header>
 
-        <section className="panel">
-          <h2>User Registration</h2>
-          <p>Register with your name, email, and password.</p>
+        <section className="layout-grid">
+          <section className="panel">
+            <h2>Product Listing</h2>
+            <ErrorBoundary>
+              <Suspense fallback={<LoadingProducts />}>
+                <ProductList productsPromise={productsPromise} />
+              </Suspense>
+            </ErrorBoundary>
+          </section>
+
+          <section className="panel">
+            <h2>User Registration</h2>
+            <p>Register with your name, email, and password.</p>
+          </section>
         </section>
-      </section>
-    </main>
+      </main>
+    </>
   );
 }
 
