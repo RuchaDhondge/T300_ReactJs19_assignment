@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
+import ProductDetails from "./components/ProductDetails";
 import ProductList from "./components/ProductList";
 import RegistrationForm from "./components/RegistrationForm";
 import RegisteredUserInfo from "./components/RegisteredUserInfo";
@@ -12,6 +13,7 @@ function LoadingProducts() {
 
 function App() {
   const [registeredUser, setRegisteredUser] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
     <>
@@ -32,9 +34,18 @@ function App() {
               <h2>Product Listing</h2>
               <ErrorBoundary>
                 <Suspense fallback={<LoadingProducts />}>
-                  <ProductList productsPromise={productsPromise} />
+                  <ProductList
+                    productsPromise={productsPromise}
+                    onSelectProduct={setSelectedProduct}
+                    selectedProductId={selectedProduct?.id}
+                  />
                 </Suspense>
               </ErrorBoundary>
+            </section>
+
+            <section className="panel">
+              <h2>Product Details</h2>
+              <ProductDetails product={selectedProduct} />
             </section>
 
             <section className="panel">
