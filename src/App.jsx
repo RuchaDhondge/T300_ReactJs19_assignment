@@ -1,3 +1,12 @@
+import { Suspense } from "react";
+import ErrorBoundary from "./components/ErrorBoundary";
+import ProductList from "./components/ProductList";
+import { productsPromise } from "./data/products";
+
+function LoadingProducts() {
+  return <p className="state-message">Loading products...</p>;
+}
+
 function App() {
   return (
     <main className="app-shell">
@@ -8,7 +17,11 @@ function App() {
       <section className="layout-grid">
         <section className="panel">
           <h2>Product Listing</h2>
-          <p>Browse available products in the catalog.</p>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingProducts />}>
+              <ProductList productsPromise={productsPromise} />
+            </Suspense>
+          </ErrorBoundary>
         </section>
 
         <section className="panel">
