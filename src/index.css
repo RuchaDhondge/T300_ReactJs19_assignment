@@ -19,10 +19,30 @@ body {
 
 .app-header {
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .app-header h1 {
   margin: 0;
+}
+
+.cart-summary-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cart-count {
+  margin: 0;
+  font-weight: 700;
+}
+
+.cart-pending {
+  font-size: 0.85rem;
+  color: #1d4ed8;
 }
 
 .layout-grid {
@@ -63,6 +83,11 @@ body {
   background: #fff;
 }
 
+.product-card.selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
 .product-image {
   width: 100%;
   height: 160px;
@@ -95,6 +120,61 @@ body {
   color: #334155;
   font-size: 0.92rem;
   line-height: 1.35;
+}
+
+.product-action-button {
+  margin-top: 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.product-details-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.product-details-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-details-content {
+  padding: 0.85rem;
+}
+
+.product-details-content h3 {
+  margin: 0;
+}
+
+.failure-toggle {
+  margin-top: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.cart-error-message {
+  margin: 0.6rem 0 0;
+  color: #b91c1c;
+  font-size: 0.88rem;
+}
+
+.cart-success-message {
+  margin: 0.6rem 0 0;
+  color: #166534;
+  font-size: 0.88rem;
 }
 
 .register-form {
@@ -179,6 +259,35 @@ body {
   border-radius: 8px;
   background: #f8fafc;
   color: #475569;
+}
+
+.ref-demo {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ref-demo h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ref-demo-text {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.ref-demo-controls {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.ref-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
 }
 
 @media (max-width: 900px) {

@@ -1,4 +1,3 @@
-import backpackImage from "../assets/products/backpack.svg";
 import headphonesImage from "../assets/products/headphones.svg";
 import shoesImage from "../assets/products/shoes.svg";
 import watchImage from "../assets/products/watch.svg";
